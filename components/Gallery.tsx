@@ -18,27 +18,27 @@ const Gallery = () => {
       title: 'Hospital'
     },
     {
-      src: '/images/1.jpeg',
+      src: '/images/1.jpg',
       alt: 'Bed Facility',
       title: 'Bed Facility'
     },
     {
-      src: '/images/4.jpeg',
+      src: '/images/4.jpg',
       alt: 'Medical',
       title: 'Medical'
     },
     {
-      src: '/images/5.jpeg',
+      src: '/images/5.jpg',
       alt: 'Medical Consultation',
       title: 'Expert Consultation'
     },
     {
-      src: '/images/8.jpeg',
+      src: '/images/8.jpg',
       alt: 'Hospital Corridor',
       title: 'Clean Facilities'
     },
     {
-      src: '/images/7.jpeg',
+      src: '/images/7.jpg',
       alt: 'Lab',
       title: 'Lab'
     }
