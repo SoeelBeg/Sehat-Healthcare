@@ -1,52 +1,29 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { X, ZoomIn } from 'lucide-react';
-
+import Image from 'next/image';
 
 const Gallery = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true,});
+  const isInView = useInView(ref, { once: true });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
-    {
-      src: '/images/2.jpg',
-      alt: 'Hospital',
-      title: 'Hospital'
-    },
-    {
-      src: '/images/1.jpg',
-      alt: 'Bed Facility',
-      title: 'Bed Facility'
-    },
-    {
-      src: '/images/4.jpg',
-      alt: 'Medical',
-      title: 'Medical'
-    },
-    {
-      src: '/images/5.jpg',
-      alt: 'Medical Consultation',
-      title: 'Expert Consultation'
-    },
-    {
-      src: '/images/8.jpg',
-      alt: 'Hospital Corridor',
-      title: 'Clean Facilities'
-    },
-    {
-      src: '/images/7.jpg',
-      alt: 'Lab',
-      title: 'Lab'
-    }
+    { src: '/images/2.jpeg', alt: 'Hospital', title: 'Hospital' },
+    { src: '/images/1.jpeg', alt: 'Bed Facility', title: 'Bed Facility' },
+    { src: '/images/4.jpeg', alt: 'Medical', title: 'Medical' },
+    { src: '/images/5.jpeg', alt: 'Medical Consultation', title: 'Expert Consultation' },
+    { src: '/images/8.jpeg', alt: 'Hospital Corridor', title: 'Clean Facilities' },
+    { src: '/images/7.jpeg', alt: 'Lab', title: 'Lab' },
   ];
 
   return (
     <section id="gallery" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -73,13 +50,14 @@ const Gallery = () => {
               whileHover={{ y: -10 }}
               className="group relative overflow-hidden rounded-2xl shadow-lg bg-white"
             >
-              <div className="relative overflow-hidden">
-                <img
+              <div className="relative w-full h-64">
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                 />
-                
+
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
@@ -96,7 +74,7 @@ const Gallery = () => {
                   </div>
                 </div>
 
-                {/* Hover Effect */}
+                {/* Hover Zoom Icon */}
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileHover={{ scale: 1, opacity: 1 }}
@@ -117,35 +95,38 @@ const Gallery = () => {
         </div>
 
         {/* Modal for Full Image View */}
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedImage(null)}
-          >
+        <AnimatePresence>
+          {selectedImage && (
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="relative max-w-4xl max-h-full"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
             >
-              <img
-                src={selectedImage}
-                alt="Full size view"
-                className="w-full h-full object-contain rounded-lg"
-              />
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                className="relative w-full max-w-4xl max-h-full"
+                onClick={(e) => e.stopPropagation()}
               >
-                <X className="w-6 h-6" />
-              </button>
+                <Image
+                  src={selectedImage}
+                  alt="Full size view"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )}
+        </AnimatePresence>
 
         {/* Call to Action */}
         <motion.div
