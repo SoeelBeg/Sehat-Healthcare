@@ -12,12 +12,12 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
-    { src: '/images/2.jpeg', alt: 'Hospital', title: 'Hospital' },
-    { src: '/images/1.jpeg', alt: 'Bed Facility', title: 'Bed Facility' },
-    { src: '/images/4.jpeg', alt: 'Medical', title: 'Medical' },
-    { src: '/images/5.jpeg', alt: 'Medical Consultation', title: 'Expert Consultation' },
-    { src: '/images/8.jpeg', alt: 'Hospital Corridor', title: 'Clean Facilities' },
-    { src: '/images/7.jpeg', alt: 'Lab', title: 'Lab' },
+    { src: '/images/2.Jpeg', alt: 'Hospital', title: 'Hospital' },
+    { src: '/images/1.Jpeg', alt: 'Bed Facility', title: 'Bed Facility' },
+    { src: '/images/4.Jpeg', alt: 'Medical', title: 'Medical' },
+    { src: '/images/5.Jpeg', alt: 'Medical Consultation', title: 'Expert Consultation' },
+    { src: '/images/8.Jpeg', alt: 'Hospital Corridor', title: 'Clean Facilities' },
+    { src: '/images/7.Jpeg', alt: 'Lab', title: 'Lab' },
   ];
 
   return (
