@@ -7,7 +7,7 @@ import { GraduationCap, Clock, IndianRupee, Stethoscope } from 'lucide-react';
 
 const Doctors = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const isInView = useInView(ref, { once: true,});
 
   return (
     <section id="doctors" className="py-20 bg-gray-50">

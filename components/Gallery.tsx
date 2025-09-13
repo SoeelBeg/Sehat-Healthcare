@@ -7,7 +7,7 @@ import { X, ZoomIn } from 'lucide-react';
 
 const Gallery = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true,});
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
