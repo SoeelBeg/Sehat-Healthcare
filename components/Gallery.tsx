@@ -13,7 +13,7 @@ const Gallery = () => {
 
   const images = [
     {
-      src: '/images/2.JPEG',
+      src: '/images/2.jpeg',
       alt: 'Hospital',
       title: 'Hospital'
     },
